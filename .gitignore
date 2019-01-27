@@ -15,6 +15,8 @@ pyvenv.cfg
 simulator/__init__.pyc
 *.egg
 
+venv/
+.povray
 
 # exception to the rule
 !somefolder/.gitkeep

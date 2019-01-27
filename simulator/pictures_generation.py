@@ -53,7 +53,7 @@ def right_direction(configuration):
         end = Point(end_pt[0], end_pt[1])
         cmd = int(compute_command_arc(origin, end, radius))
         if int(cmd) <= 36:
-            img = grounds[np.random.choice(range(3))]
+            img = grounds[np.random.choice(range(1))]
             img_drawn = draw_central_dashed_arc_on_ground(img, origin, end, radius, (148, 252, 9))
             img_complete = draw_lateral_complete_arcs_on_ground(img_drawn, origin, end, radius, (255, 255, 255))
             img_final = 255 * np.ones((3 * img.shape[0], 4 * img.shape[1], 3), dtype='uint8')
