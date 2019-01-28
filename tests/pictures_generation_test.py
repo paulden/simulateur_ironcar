@@ -3,7 +3,7 @@ import os
 from unittest.mock import patch
 
 from definitions import CONFIG_PATH
-from simulator.pictures_generation import right_direction
+from simulator.pictures_generation import PictureGeneration
 
 
 def test_it_should_generate_new_images():
@@ -15,7 +15,8 @@ def test_it_should_generate_new_images():
     image_number_init = len(images_produced_by_povray)
 
     # Where
-    right_direction(configuration)
+    generator = PictureGeneration(configuration)
+    generator.right_direction()
     images_produced_by_povray = [x for x in os.listdir(PHOTOS_PATH) if x.endswith('.png')]
     image_number_end = len(images_produced_by_povray)
 
@@ -31,7 +32,8 @@ def test_it_should_call_subprocess(subprocess_mock):
     configuration['images_curve'] = 1
 
     # When
-    right_direction(configuration)
+    generator = PictureGeneration(configuration)
+    generator.right_direction()
 
     # Then
     assert subprocess_mock.call_count == 2
@@ -44,7 +46,8 @@ def test_it_should_call_povray(subprocess_mock):
     configuration['images_curve'] = 1
 
     # When
-    right_direction(configuration)
+    generator = PictureGeneration(configuration)
+    generator.right_direction()
     subprocess_args, kwargs = subprocess_mock.call_args
 
     # Then
