@@ -14,7 +14,7 @@ from simulator.utils import Point
 CONFIGURATION = json.load(open(CONFIG_PATH))
 
 
-class PictureGeneration:
+class PicturesGenerator:
 
     def __init__(self, configuration):
         # Configuration
@@ -47,7 +47,7 @@ class PictureGeneration:
 
         self.image_to_generate = configuration['images_curve']
 
-    def right_direction(self):
+    def run(self):
         image_number = 0
         while True:
             radius, origin, end = self.generate_coordinates()
