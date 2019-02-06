@@ -18,24 +18,25 @@ class PicturesGenerator:
 
     def __init__(self, configuration):
         # Configuration
-        self.origin_pool = np.arange(configuration['origin_pool_start'],
-                                     configuration['origin_pool_end'],
-                                     configuration['origin_pool_step'])
-        self.origin_pool = [(x, configuration['image_height']) for x in self.origin_pool]
+        origin_pool = np.arange(configuration['origin_pool_start'],
+                                configuration['origin_pool_end'],
+                                configuration['origin_pool_step'])
 
-        self.end_pool_top = np.arange(configuration['end_pool_top_start'],
+        self.origin_pool = [(x, configuration['image_height']) for x in origin_pool]
+
+        end_pool_top = np.arange(configuration['end_pool_top_start'],
                                       configuration['end_pool_top_end'],
                                       configuration['end_pool_top_step'])
-        self.end_pool_top = [(x, 0) for x in self.end_pool_top]
+        self.end_pool_top = [(x, 0) for x in end_pool_top]
 
-        self.end_pool_right = range(configuration['end_pool_right_start'],
-                                    configuration['end_pool_right_end'],
-                                    configuration['end_pool_right_step'])
-        self.end_pool_right = [(configuration['image_width'], x) for x in self.end_pool_right]
+        end_pool_right = np.arange(configuration['end_pool_right_start'],
+                                        configuration['end_pool_right_end'],
+                                        configuration['end_pool_right_step'])
+        self.end_pool_right = [(configuration['image_width'], x) for x in end_pool_right]
 
         self.end_pool = self.end_pool_top + self.end_pool_right
 
-        self.radius_pool = range(configuration['radius_pool_start'],
+        self.radius_pool = np.arange(configuration['radius_pool_start'],
                                  configuration['radius_pool_end'],
                                  configuration['radius_pool_step'])
 
